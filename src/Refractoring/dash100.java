@@ -88,26 +88,26 @@ import Refractoring.FootballPlayer2;
 	    dash100 fb100Dash = new dash100();
 	    fb100Dash.addFootballPlayer(mihaiViteazu);
 	    fb100Dash.printPlayerInfo();
-	}
+	}}
 		
 	
-double average = 0.0;
-double[] dashTimes={4.36, 4.39,4.14};
-for(int i = 0; i < dashTimes.length; i++) {
-	totalDashTimes += dashTimes;
-}
-average = totalDashTimes / dashTimes.length;
+//double average = 0.0;
+//double[] dashTimes={4.36, 4.39,4.14};
+//for(int i = 0; i < dashTimes.length; i++) {
+//	totalDashTimes += dashTimes;
+//}
+//average = totalDashTimes / dashTimes.length;
 
 //----- Extracting methods
-double[] dashTimes{4.36,4.39, 4.41};
-double average = getAvgDashTime(dashTimes);
+//double[] dashTimes{4.36,4.39, 4.41};
+//double average = getAvgDashTime(dashTimes);
 
-public static double getAvgDashTime(double[] dashTimes) {
-	double totalDashTimes = 0.0;
-	for (int i = 0; i< dashTimes.length;i++) {
-		totalDashTimes +=dashTimes;
-	}
-	return totalDashTimes / dashTimes.length;
-}}
+//public static double getAvgDashTime(double[] dashTimes) {
+//	double totalDashTimes = 0.0;
+//	for (int i = 0; i< dashTimes.length;i++) {
+//		totalDashTimes +=dashTimes;
+//	}
+//	return totalDashTimes / dashTimes.length;
+//}}
 
 

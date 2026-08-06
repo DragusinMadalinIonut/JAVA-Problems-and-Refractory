@@ -8,7 +8,7 @@ package Refractoring;
  * subclasses to override the varieties in the behaviour
  */
 
-public class Hamburger {
+public class Hamburger extends Sandwich{
 
 	public Hamburger() {
 		// TODO Auto-generated constructor stub
@@ -41,4 +41,16 @@ public class Hamburger {
 }
 }
 		 */
+
+	@Override
+	void addMeat() {
+		// TODO Auto-generated method stub
+		System.out.println("Hamburger Added");
+	}
+
+	@Override
+	void addCondiments() {
+		// TODO Auto-generated method stub
+		System.out.println("Mayo");
+	}
 	}

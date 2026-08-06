@@ -2,10 +2,10 @@ package Refractoring;
 
 //abstract acts as a skeletal framework for derived subclasses 
 //must implement specific missing steps of an algorithm while the base class controls the fixed overall execution order
-public abstract class Sandwhich {
+public abstract class Sandwich {
 
 	//constructor is far less charged and we don't need to make mroe
-	//final means no other class can ask to make a sandwhich
+	//final means no other class can ask to make a sandwich
 	final void makeSandwich() {
 		System.out.println("\n----NEW ORDER---\n");
 	

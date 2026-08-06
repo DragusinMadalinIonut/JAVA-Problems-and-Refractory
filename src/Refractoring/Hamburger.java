@@ -18,11 +18,14 @@ public class Hamburger {
 		 * We need to make a constructor that would have a lot of the booleans 
 		 * inside of it
 		 */
-		private boolean customerWantsCondiments = true;
+	/*	private boolean customerWantsCondiments = true;
 		Hamburger(boolean wantsCondiments){
 			customerWantsCondiments = wantsCondiments;
-			
+		*/	
 		}
+		/*
+		 * 
+	
 		private makeSandwich() {
 			//going thorugh the necessarya ctons to creat a sandwich
 			cutBun();
@@ -36,7 +39,6 @@ public class Hamburger {
 		wrapSandwich();
 	}
 }
-
-
-
 }
+		 */
+	}

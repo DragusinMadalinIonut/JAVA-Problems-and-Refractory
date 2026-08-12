@@ -9,7 +9,7 @@ public class Item {
 
 	private HashMap<String, String> itemInfoHM;
 	private String itemName= "";
-	private ArrayList<Item> children new ArrayList<Item>();
+	private ArrayList<Item> children = new ArrayList<Item>();
 	
 	public String getItemName() {return itemName;}
 	public void setItemName(String itemName) {this.itemName = itemName;}
@@ -25,7 +25,7 @@ public class Item {
 		children.add(childNode);
 	}
 	
-	public void additemInformaton(String infoName, String info) {
+	public void addItemInformation(String infoName, String info) {
 		itemInfoHM.put(infoName, info);
 	}
 	
@@ -46,5 +46,101 @@ public class Item {
 		return itemInformation;
 	}
 	
+	public String displayProductInfo() {
+		String productInfo = "";
+		for (Map.Entry<String, String> entry : itemInfoHM.entrySet()){
+			productInfo += entry.getKey() + ": " + entry.getValue() + "";
+			
+		}
+		return productInfo;
+	}
 	
+
+	public static void main(String[] args) {
+		
+		ItemBuilder products = new ItemBuilder("Products");
+		products.addChild("Produce");
+		products.addChild("Orange");
+		products.addItemInformation("price", "$1.00");
+		products.addItemInformation("Stock","100");
+		products.displayALlITems();
+	}
+}
+
+class ItemBuilder{
+	ArrayList<Item> items = new ArrayList<Item>();
+	
+	private Item root;
+	private Item current;
+	private Item parent;
+	
+	public ItemBuilder(String rootName) {
+		
+		root = new Item(rootName);
+		
+		addItemToArrayList(root);
+		current = root;
+		parent = root;
+		
+		root.addItemInformation("Parent",parent.getItemName());
+		
+	}
+	public void addItemInformation(String name, String value) {
+		current.addItemInformation(name, value);
+	}
+	
+	public void addChild(String child) {
+		Item childNode = new Item(child);
+		
+		addItemToArrayList(childNode);
+		current.add(childNode);
+		parent=current;
+		current=childNode;
+		
+		childNode.addItemInformation("Parent", parent.getItemName());
+
+	}
+	public void addSibling(String sibling) {
+		Item siblingNode = new Item(sibling);
+		
+		addItemToArrayList(siblingNode);
+		
+		parent.add(siblingNode);
+		current = siblingNode;
+		siblingNode.addItemInformation("parent", parent.getItemName());
+		
+	}
+	
+	public void addItemToArrayList(Item newItem) {
+		items.add(newItem);
+	}
+	
+	public String toString() {
+		return root.toString();
+	}
+	public void displayALlITems() {
+		for(Item item : items) {
+			System.out.println(item.getItemName() + ": " +
+			item.displayProductInfo());
+		}
+	}
+	public void editThisItem(String itemName) {
+		for(Item item : items) {
+			if(item.getItemName().equals(itemName)) {
+				current = item;
+				setItemsParent(current.getItemInformation("Parent"));
+			}
+			System.out.println(item.getItemName() + ":" +
+			item.displayProductInfo());
+		}
+	}
+
+
+public void setItemsParent(String parentItem) {
+	for(Item item : items) {
+		if(item.getItemName().equals(parentItem)) {
+			parent = item;
+		}
+	}
+}
 }

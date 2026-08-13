@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.lang.StringBuilder;
 
 public class Item {
 
@@ -32,19 +33,59 @@ public class Item {
 	public String getItemInformation(String infoName) {
 		return itemInfoHM.get(infoName);
 	}
+	
+	//String became an accumulate method
+	//too many functions have accumulated the information into itemInformation
+	//the usage of a string buffer is needed. Known as a collecting parameter
+	//collects information as we move from method to method
+
 	public String toString() {
-		String itemInformation = itemName + "\n";
-		if(!itemInfoHM.isEmpty()) {
+		
+		StringBuffer itemInfo = new StringBuffer();
+		
+		addItemInfoAndCildren( itemInfo);
+		
+		
+		/*String itemInformation = itemName + "\n";
+		*/
+		
+		/*if(!itemInfoHM.isEmpty()) {
 			itemInformation += displayProductInfo();
 		}
+		*/
+		/*Iterator<Item> it = children.iterator();
+	
+		while(it.hasNext()) {
+			Item node = (Item)it.next();
+			itemInformation += node.toString(); //node recursively calls to string. We can't pass a parameter. We need to create a new method 
+		}*/
+		return itemInfo.toString();
+	} 
+	
+	private void addItemInfoAndCildren(StringBuffer itemInfo) {
+		addItemInformation(itemInfo);
+		addChildrenInformation(itemInfo);
+		
+	}
+	
+	private void addChildrenInformation(StringBuffer itemInfo) {
 		Iterator<Item> it = children.iterator();
 		
 		while(it.hasNext()) {
 			Item node = (Item)it.next();
-			itemInformation += node.toString();
+			itemInfo.append(node.toString()); //node recursively calls to string. We can't pass a parameter. We need to create a new method 
 		}
-		return itemInformation;
 	}
+	
+	private void addItemInformation(StringBuffer itemInfo) {
+		itemInfo.append("\n" + itemName + "");
+		
+		if(!itemInfoHM.isEmpty()) {
+			itemInfo.append(displayProductInfo());
+	}
+	}
+	
+	
 	
 	public String displayProductInfo() {
 		String productInfo = "";

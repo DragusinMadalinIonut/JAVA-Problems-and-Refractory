@@ -8,16 +8,25 @@ import java.lang.StringBuilder;
 
 public class Item {
 
+	//HashMap stores key value pairs for items
+	//Everything is as a String
 	private HashMap<String, String> itemInfoHM;
+	
 	private String itemName= "";
+	//ArrayList stores items.
 	private ArrayList<Item> children = new ArrayList<Item>();
 	
+	//method to get the items
 	public String getItemName() {return itemName;}
+	
+	//Setting the item name.
 	public void setItemName(String itemName) {this.itemName = itemName;}
 	
 	public Item(String itemName) {
+		//pass the parameters to parent class constructor
 		super();
 		setItemName(itemName);
+		//hashmap that stores the item information
 		itemInfoHM = new HashMap<String, String>(20);
 	}
 
@@ -89,6 +98,8 @@ public class Item {
 	
 	public String displayProductInfo() {
 		String productInfo = "";
+		//cycle through a hash map.
+		//entry set returns all the map entries for all keys and values. Works like an enhanced for loop.
 		for (Map.Entry<String, String> entry : itemInfoHM.entrySet()){
 			productInfo += entry.getKey() + ": " + entry.getValue() + "";
 			
@@ -111,6 +122,9 @@ public class Item {
 class ItemBuilder{
 	ArrayList<Item> items = new ArrayList<Item>();
 	
+	//root is the root
+	//current is the current item
+	//parent allows us to move through the tree 
 	private Item root;
 	private Item current;
 	private Item parent;
@@ -141,12 +155,16 @@ class ItemBuilder{
 		childNode.addItemInformation("Parent", parent.getItemName());
 
 	}
+	
+	//adding siblings . Other items with the same aprent.
+	
 	public void addSibling(String sibling) {
 		Item siblingNode = new Item(sibling);
 		
 		addItemToArrayList(siblingNode);
 		
 		parent.add(siblingNode);
+		//make the sibling be the current item
 		current = siblingNode;
 		siblingNode.addItemInformation("parent", parent.getItemName());
 		

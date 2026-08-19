@@ -22,4 +22,27 @@ public class ATMAccessBad {
 		else state = DENIED;
 		
 	}
+	
+	public void verifyPin(int pinNumber) {
+		if(PIN_NUMBER == pinNumber) {
+			state = VALID_PIN;
+		} else state = DENEID:
+	}
+	
+	public void verifyWithdrawalAmount(double withdrawalRequest) {
+		if (CARD_BALANCE > withdrawalRequest) {
+			state = VALID_CASH_REQUEST;
+			} else state = DENIED;
+	}
+	public static void main(String[] args) {
+	
+		ATMAccessBad user = new ATMAccessBad();
+		System.out.println(user.state);
+		user.verifyCard(123456789);;
+		System.out.println(user.state);
+		user.verifyPin(1234);
+	}
 }
+
+
+
